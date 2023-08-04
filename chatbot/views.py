@@ -4,13 +4,13 @@ import openai
 from  .models import Past
 from django.core.paginator import Paginator
 def home(request):
-    # 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
+    # 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 ewa
     details = "home.html"
     if request.method == "POST":
         question = request.POST['question']
         past_responses = request.POST['past_responses']
         # set api key
-        openai.api_key = "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"
+        openai.api_key = "sk-ab72hPhuYcEVUEobStioT3BlbkFJsfJEKN3AB9ePI5LHOjMxewa"
         openai.Model.list()
         try:
             response = openai.Completion.create(
