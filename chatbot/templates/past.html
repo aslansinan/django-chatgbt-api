@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if pages %}
+        {% for thing in pages %}
+            <strong>{{ thing.question }}</strong><br/>
+            {{ thing.answer }}<br/>
+            <a href="{% url 'delete_past' thing.id %}" class="btn btn-outline-secondary">Delete</a>
+            <br/><br/>
+        {% endfor %}
+    {% endif %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+            {% if pages.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ pages.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+            {% for i in nums %}
+                <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                </li>
+            {% endfor %}
+
+            {% if pages.has_next %}
+                <li class="page-item"><a class="page-link" href="?page = {{ pages.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?page= {{ pages.paginator.num_pages }}">Last
+                    &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {#    Has Previous: {{ pages.has_previous }}<br />#}
+    {#    Current Page: {{ pages.number }}<br />#}
+    {#    Number od Pages: {{ pages.paginator.num_pages }}<br />#}
+{% endblock %}

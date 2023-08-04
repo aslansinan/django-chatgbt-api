@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if question %}
+        <h3>Question : {{ question }}
+    {% endif %}
+    <br/><br/>
+    <div class="card">
+        <div class="card-header">
+            ChatGBT Response
+        </div>
+        <div class="card-body">
+            <div class="card-header">
+                {% if response %}
+                    {{ past_responses|safe }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% if past_responses %}
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="hidden" name="past_responses" value="{{ past_responses }}">
+        </div>
+          <div class="mb-3">
+            <input type="text" name="question" class="form-control" placeholder="Bir soru Sorun">
+        </div>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+{% else %}
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+         <div class="mb-3">
+            <input type="hidden" name="past_responses" value="44sinan4434">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="question" class="form-control" placeholder="Bir soru Sorun">
+        </div>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+{% endif %}
+{% endblock %}

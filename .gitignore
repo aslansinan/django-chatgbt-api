@@ -1,0 +1,31 @@
+# Django related files
+*.pyc
+*.pyo
+__pycache__
+
+# Python virtual environment
+venv/
+env/
+
+# Development server SQLite database
+db.sqlite3
+
+# Media and static files (if not stored remotely)
+media/
+static/
+
+# Local settings (if you have separate settings for development)
+local_settings.py
+
+# Secret keys and sensitive information
+secret_key.txt
+settings.py
+
+# Temporary files
+*.log
+*.swp
+
+# IDE-specific files
+.vscode/
+*.sublime-project
+*.sublime-workspace
